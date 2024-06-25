@@ -4,6 +4,7 @@ import com.APITickets.API_Tickets.Module.Utilisateurs;
 import com.APITickets.API_Tickets.Repository.User_repository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 public class UserServiceImplement implements UserService {
 
+    private final PasswordEncoder passwordEncoder;
     private User_repository UserRepository;
 
     @Override
@@ -38,7 +40,8 @@ public class UserServiceImplement implements UserService {
             p.setNom(user.getNom());
             p.setEmail(user.getEmail());
             p.setRole(user.getRole());
+            p.setMdp(passwordEncoder.encode(user.getMdp()));
             return UserRepository.save(p);
-        }).orElseThrow(()-> new RuntimeException("Nous avons raccontre un probleme lors de la mise a jour de " + id + "")) ;
+        }).orElseThrow(()-> new RuntimeException("Nous avons raccontre un probleme lors de la mise a jour de " + id )) ;
     }
 }

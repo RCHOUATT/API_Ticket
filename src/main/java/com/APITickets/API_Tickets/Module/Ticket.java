@@ -23,6 +23,8 @@ public class Ticket {
 
     private String description;
 
+    private String reponse;
+
     private Date date = new Date();
 
     @Enumerated(EnumType.ORDINAL)

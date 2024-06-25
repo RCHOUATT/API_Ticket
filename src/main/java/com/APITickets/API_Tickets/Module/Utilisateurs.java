@@ -1,7 +1,6 @@
 package com.APITickets.API_Tickets.Module;
 
 import com.APITickets.API_Tickets.enums.Role;
-import com.APITickets.API_Tickets.enums.TypeStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

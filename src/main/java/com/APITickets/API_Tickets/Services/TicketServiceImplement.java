@@ -43,4 +43,13 @@ public class TicketServiceImplement implements TicketService {
                         return ticketRepository.save(p);
                     }).orElseThrow(() -> new RuntimeException("Ticket " + id + " non trouvé" ));
     }
+
+    @Override
+    public Ticket UpdateTickets(Long id, Ticket ticket) {
+        return ticketRepository.findById(id)
+                .map(p -> {
+                    p.setReponse(ticket.getReponse());
+                    return ticketRepository.save(p);
+                }).orElseThrow(() -> new RuntimeException("Ticket " + id + " non trouvé" ));
+    }
 }

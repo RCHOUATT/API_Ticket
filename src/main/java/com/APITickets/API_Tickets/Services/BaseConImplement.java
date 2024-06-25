@@ -1,10 +1,7 @@
 package com.APITickets.API_Tickets.Services;
 
 import com.APITickets.API_Tickets.Module.BaseDeConnaissance;
-import com.APITickets.API_Tickets.Module.Ticket;
 import com.APITickets.API_Tickets.Repository.BaseCon_repository;
-import com.APITickets.API_Tickets.Repository.Ticket_repository;
-import com.APITickets.API_Tickets.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;

@@ -20,6 +20,6 @@ public class BaseDeConnaissance {
 
     private String reponse;
 
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private Role role;
 }

@@ -31,11 +31,13 @@ public class ConfigSecurityApp{
                 //.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/User/**").hasRole("ADMIN")
-                            .requestMatchers("/User/update/**").hasRole("FORMATEUR")
+                    registry.requestMatchers("/Notification/**").permitAll()
+                            .requestMatchers("/User/**").hasRole("ADMIN")
+                            .requestMatchers("/Users/**").hasAnyRole("FORMATEUR", "APPRENANT")
                             .requestMatchers("/BDCon/**").hasRole("FORMATEUR")
+                            .requestMatchers("/BDCons/**").hasRole("APPRENANT")
                             .requestMatchers("/ticket/**").hasRole("APPRENANT")
-                            .requestMatchers("/ticket/update/**").hasRole("FORMATEUR")
+                            .requestMatchers("/tickets/**").hasRole("FORMATEUR")
                             .anyRequest().authenticated();
                 })
                 .httpBasic(Customizer.withDefaults())
