@@ -1,8 +1,10 @@
 package com.APITickets.API_Tickets.Repository;
 
-import com.APITickets.API_Tickets.Module.Ticket;
+import com.APITickets.API_Tickets.Module.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface Ticket_repository extends JpaRepository<Ticket, Long>{
+@Repository
+public interface Notif_repository extends JpaRepository<Notification, Long>{
 
 }
