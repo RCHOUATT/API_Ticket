@@ -31,7 +31,7 @@ public class ConfigSecurityApp{
                 //.csrf(httpSecurityCsrfConfigurer -> httpSecurityCsrfConfigurer.disable())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/Notification/**").permitAll()
+                    registry.requestMatchers("/notif/**").permitAll()
                             .requestMatchers("/User/**").hasRole("ADMIN")
                             .requestMatchers("/Users/**").hasAnyRole("FORMATEUR", "APPRENANT")
                             .requestMatchers("/BDCon/**").hasRole("FORMATEUR")

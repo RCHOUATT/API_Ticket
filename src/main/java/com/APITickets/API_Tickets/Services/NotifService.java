@@ -1,21 +1,26 @@
 package com.APITickets.API_Tickets.Services;
 
-import lombok.AllArgsConstructor;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 @Service
-@AllArgsConstructor
 public class NotifService {
 
-    private JavaMailSender emailSender;
+    private final JavaMailSender mailSender;
 
-    public void sendSimpleMessage(String to, String subject, String text) {
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(to);
-        message.setSubject(subject);
-        message.setText(text);
-        emailSender.send(message);
+    public NotifService(JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
+
+    public void sendEmail(String to, String subject, String content) throws MessagingException {
+        MimeMessage message = mailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(content, true); // true indicates HTML content
+        mailSender.send(message);
     }
 }
