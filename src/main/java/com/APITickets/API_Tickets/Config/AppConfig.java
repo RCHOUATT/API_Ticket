@@ -17,7 +17,7 @@ public class AppConfig {
         mailSender.setPort(587);
 
         mailSender.setUsername("");
-        mailSender.setPassword("");
+        mailSender.setPassword("kswq aact lkjm epdb");
 
         // Enable TLS settings
         Properties props = mailSender.getJavaMailProperties();
