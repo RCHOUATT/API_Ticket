@@ -25,6 +25,8 @@ public class Ticket {
 
     private String reponse;
 
+    private String cible;
+
     private Date date = new Date();
 
     @Enumerated(EnumType.ORDINAL)

@@ -1,9 +1,12 @@
 package com.APITickets.API_Tickets.Services;
 
+import com.APITickets.API_Tickets.Module.Notification;
 import com.APITickets.API_Tickets.Module.Ticket;
 import com.APITickets.API_Tickets.Repository.Ticket_repository;
+import jakarta.mail.MessagingException;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
@@ -16,9 +19,19 @@ import java.util.List;
 public class TicketServiceImplement implements TicketService {
 
     private Ticket_repository ticketRepository;
+    private NotifService notifService;
+
 
     @Override
     public Ticket CreerTicket(Ticket ticket) {
+        Notification notif = new Notification();
+        notif.setSubject("Nouveau Ticket");
+        notif.setDest_email(ticket.getCible());
+        try {
+            notifService.sendEmail(notif);
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
         return ticketRepository.save(ticket);
     }
 

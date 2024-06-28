@@ -51,7 +51,6 @@ public class ConfigSecurityApp{
         provider.setUserDetailsService(detailService);
         provider.setPasswordEncoder(passwordEncoder());
         return provider;
-
     }
 
     @Bean
