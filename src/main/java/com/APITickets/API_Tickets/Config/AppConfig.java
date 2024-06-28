@@ -16,8 +16,8 @@ public class AppConfig {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("cheickhamedouattara865@gmail.com");
-        mailSender.setPassword("dvctryjlnltoogkk");
+        mailSender.setUsername("");
+        mailSender.setPassword("");
 
         // Enable TLS settings
         Properties props = mailSender.getJavaMailProperties();
